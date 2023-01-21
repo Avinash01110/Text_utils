@@ -6,9 +6,6 @@ import TextForm from "./components/TextForm";
 import Suggest from "./components/Suggest";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
-import { Link } from "react-router-dom";
-
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Contactus from "./components/Contactus";
 
 function App() {
@@ -44,7 +41,6 @@ function App() {
 
   return (
     <>
-    <Router>
       <Navbar
         title="Text Utils"
         modetxt={modetxt}
@@ -56,25 +52,16 @@ function App() {
       />
       <Alert alert={alert} />
       <div className="container my-5">
-          <Routes>
-            <Route path="/about" element={<About modetxt={modetxt} mode={mode} />}></Route>
-            <Route
-              path="/"
-              element={
-                <TextForm
-                  heading="Enter the text to analyze"
-                  showalert={showalert}
-                  modetxt={modetxt}
-                  mode={mode}
-                />
-              }
-            >
-            </Route>
-            <Route path="/Suggest" element={<Suggest mode={mode}/>}></Route>
-            <Route path="/Contactus" element={<Contactus mode={mode}/>}></Route>
-          </Routes>
+        <TextForm
+          heading="Enter the text to analyze"
+          showalert={showalert}
+          modetxt={modetxt}
+          mode={mode}
+        />
       </div>
-      </Router>
+      <About modetxt={modetxt} mode={mode} />
+      <Suggest mode={mode} />
+      <Contactus mode={mode} />
     </>
   );
 }
